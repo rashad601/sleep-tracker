@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.sleeptrack.main.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+    </fragment>
+    <fragment
+        android:id="@+id/recordSleepFragment"
+        android:name="com.sleeptrack.main.recordsleep.RecordSleepFragment"
+        android:label="fragment_record_sleep"
+        tools:layout="@layout/fragment_record_sleep" />
+    <activity
+        android:id="@+id/allRecordsActivity"
+        android:name="com.sleeptrack.main.allrecords.AllRecordsActivity"
+        android:label="activity_all_records"
+        tools:layout="@layout/activity_all_records" />
+    <activity
+        android:id="@+id/aboutActivity"
+        android:name="com.sleeptrack.about.AboutActivity"
+        android:label="activity_about"
+        tools:layout="@layout/activity_about" />
+</navigation>
