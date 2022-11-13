@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.sleeptrack.main.home.HomeFragment"
-        android:label="fragment_home"
+        android:label="Sleep Track"
         tools:layout="@layout/fragment_home" >
     </fragment>
     <fragment
@@ -18,12 +18,17 @@
         tools:layout="@layout/fragment_record_sleep" />
     <activity
         android:id="@+id/allRecordsActivity"
-        android:name="com.sleeptrack.main.allrecords.AllRecordsActivity"
+        android:name="com.sleeptrack.main.allrecords.AllRecordsListActivity"
         android:label="activity_all_records"
-        tools:layout="@layout/activity_all_records" />
+        tools:layout="@layout/activity_all_records_list" />
     <activity
         android:id="@+id/aboutActivity"
         android:name="com.sleeptrack.about.AboutActivity"
         android:label="activity_about"
         tools:layout="@layout/activity_about" />
+    <activity
+        android:id="@+id/allRecordsGraphActivity"
+        android:name="com.sleeptrack.main.allrecords.AllRecordsGraphActivity"
+        android:label="activity_all_records_graph"
+        tools:layout="@layout/activity_all_records_graph" />
 </navigation>

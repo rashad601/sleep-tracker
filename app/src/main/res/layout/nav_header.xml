@@ -9,18 +9,12 @@
     android:padding="@dimen/header_padding"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="wrap_content"
-        android:layout_gravity="center"
-        app:cardCornerRadius="24dp"
-        android:elevation="12dp"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:layout_height="wrap_content">
+
         <ImageView
             android:layout_width="@dimen/header_image_width"
             android:layout_height="100dp"
+            android:layout_gravity="center"
             android:src="@mipmap/ic_launcher"
             android:contentDescription="@string/app_name" />
-    </androidx.cardview.widget.CardView>
 
 </FrameLayout>
