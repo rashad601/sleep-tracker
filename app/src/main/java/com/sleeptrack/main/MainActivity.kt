@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration =
             AppBarConfiguration.Builder(
-                R.id.homeFragment,
+                R.id.SleepTrackerFragment,
+                R.id.recordSleepFragment
             )
                 .setOpenableLayout(drawerLayout)
                 .build()

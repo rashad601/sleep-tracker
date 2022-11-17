@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.sleeptrack">
 
     <application
         android:allowBackup="true"
@@ -11,24 +12,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".main.sleepdetail.SleepDetailActivity"
+            android:exported="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".main.allrecords.AllRecordsGraphActivity"
-            android:exported="true" >
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".about.AboutActivity"
-            android:exported="true" >
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
             android:name=".main.allrecords.AllRecordsListActivity"
-            android:exported="true" >
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -41,7 +49,7 @@
         <activity
             android:name=".splash.SplashActivity"
             android:exported="true"
-            android:theme="@style/splashscreen" >
+            android:theme="@style/splashscreen">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -54,7 +62,7 @@
         </activity>
         <activity
             android:name=".main.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

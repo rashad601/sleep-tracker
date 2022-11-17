@@ -3,19 +3,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/SleepTrackerFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.sleeptrack.main.home.HomeFragment"
+        android:id="@+id/SleepTrackerFragment"
+        android:name="com.sleeptrack.main.home.SleepTrackerFragment"
         android:label="Sleep Track"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_sleep_tracker" >
+        <action
+            android:id="@+id/action_SleepTrackerFragment_to_recordSleepFragment"
+            app:destination="@id/recordSleepFragment" />
     </fragment>
     <fragment
         android:id="@+id/recordSleepFragment"
         android:name="com.sleeptrack.main.recordsleep.RecordSleepFragment"
         android:label="fragment_record_sleep"
-        tools:layout="@layout/fragment_record_sleep" />
+        tools:layout="@layout/fragment_record_sleep" >
+        <argument
+            android:name="sleepNightKey"
+            app:argType="long"
+             />
+    </fragment>
     <activity
         android:id="@+id/allRecordsActivity"
         android:name="com.sleeptrack.main.allrecords.AllRecordsListActivity"
@@ -31,4 +39,8 @@
         android:name="com.sleeptrack.main.allrecords.AllRecordsGraphActivity"
         android:label="activity_all_records_graph"
         tools:layout="@layout/activity_all_records_graph" />
+    <activity
+        android:id="@+id/sleepDetailActivity"
+        android:name="com.sleeptrack.main.sleepdetail.SleepDetailActivity"
+        android:label="SleepDetailActivity" />
 </navigation>
