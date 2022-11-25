@@ -1,5 +1,7 @@
 package com.sleeptrack.utils
 
+import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
@@ -35,4 +37,10 @@ fun ImageView.setSleepImage(item: SleepNight?) {
             }
         )
     }
+}
+
+@BindingAdapter("setVisible")
+fun View.setVisible(visible: Boolean) {
+    visibility = if (visible) View.VISIBLE
+    else View.INVISIBLE
 }

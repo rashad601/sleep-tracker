@@ -124,6 +124,7 @@ class SleepTrackerViewModel(val database: SleepDatabaseDao, application: Applica
 
     fun doneNavigating() {
         _navigateToSleepQuality.value = null
+        tonight.value = null
     }
 
     override fun onCleared() {

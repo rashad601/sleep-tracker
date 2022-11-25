@@ -36,7 +36,6 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration =
             AppBarConfiguration.Builder(
                 R.id.SleepTrackerFragment,
-                R.id.recordSleepFragment
             )
                 .setOpenableLayout(drawerLayout)
                 .build()
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
-                R.id.aboutActivity -> hideNav()
+                R.id.recordSleepFragment -> hideNav()
                 else -> showNav()
             }
         }
