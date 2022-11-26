@@ -11,6 +11,9 @@ class RecordSleepViewModel(private val sleepNightKey: Long = 0L, val database: S
     private val viewModelJob = Job()
     private val uiScope = CoroutineScope(Dispatchers.Main + viewModelJob)
 
+    val feeback = MutableLiveData<String>("")
+    val quality = MutableLiveData<Int>(3)
+
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()
@@ -24,14 +27,23 @@ class RecordSleepViewModel(private val sleepNightKey: Long = 0L, val database: S
         _navigateToSleepTracker.value = null
     }
 
-    fun onSetSleepQuality(quality: Int) {
+
+    fun save() {
         uiScope.launch {
             withContext(Dispatchers.IO) {
                 val tonight = database.get(sleepNightKey) ?: return@withContext
-                tonight.sleepQuality = quality
+                tonight.feedback =
+                    if (!feeback.value.toString().trim().isNullOrEmpty()) feeback.value.toString()
+                        .trim() else ""
+                tonight.sleepQuality = quality.value!!
                 database.update(tonight)
             }
             _navigateToSleepTracker.value = true
         }
     }
+
+    fun setFeelingQuality(i: Int) {
+        quality.value = i
+    }
+
 }

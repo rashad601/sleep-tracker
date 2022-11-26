@@ -23,6 +23,9 @@
             android:name="sleepNightKey"
             app:argType="long"
              />
+        <action
+            android:id="@+id/action_recordSleepFragment_to_SleepTrackerFragment"
+            app:destination="@id/SleepTrackerFragment" />
     </fragment>
     <activity
         android:id="@+id/allRecordsActivity"
