@@ -48,12 +48,29 @@
                     android:src="@mipmap/ic_launcher_round"
                     android:contentDescription="@string/app_name" />
 
+                <Chronometer
+                    android:id="@+id/startTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:text=""
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    app:setVisible="@{sleepTrackerViewModel.stopButtonVisible}"
+                    app:autoSizeTextType="uniform"
+                    android:textColor="@color/primaryColor"
+                    android:textSize="@dimen/_16ssp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    />
+
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/start"
                     android:layout_width="match_parent"
                     android:layout_height="65dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/_66sdp"
+                    android:layout_marginTop="@dimen/_46sdp"
                     android:layout_marginEnd="16dp"
                     app:setVisible="@{sleepTrackerViewModel.startButtonVisible}"
                     android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
