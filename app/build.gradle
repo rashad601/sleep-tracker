@@ -94,4 +94,5 @@ dependencies {
 
     implementation 'com.github.unaisulhadi:emojiratingbar:1.0.5'
 
+    implementation 'com.airbnb.android:lottie:5.0.3'
 }

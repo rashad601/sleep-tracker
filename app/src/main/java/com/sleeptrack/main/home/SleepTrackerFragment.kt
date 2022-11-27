@@ -1,17 +1,23 @@
 package com.sleeptrack.main.home
 
-import android.os.Bundle
-import android.os.SystemClock
+import android.os.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.sleeptrack.database.SleepDatabase
 import com.sleeptrack.databinding.FragmentSleepTrackerBinding
+
+
+val START_BUZZ_PATTERN =
+    longArrayOf(100, 100, 100, 100, 100, 100, 100, 100)
+val FEEDBACK_BUZZ_PATTERN =
+    longArrayOf(0, 100, 500, 900,)
+val STOP_BUZZ_PATTERN = longArrayOf(0, 1000)
 
 
 class SleepTrackerFragment : Fragment() {
@@ -40,6 +46,7 @@ class SleepTrackerFragment : Fragment() {
 
         sleepTrackerViewModel.navigateToSleepQuality.observe(viewLifecycleOwner, Observer { night ->
             night?.let {
+                buzz(STOP_BUZZ_PATTERN)
                 findNavController().navigate(
                     SleepTrackerFragmentDirections
                         .actionSleepTrackerFragmentToRecordSleepFragment(night.nightId)
@@ -49,6 +56,7 @@ class SleepTrackerFragment : Fragment() {
         })
         sleepTrackerViewModel.tonight.observe(viewLifecycleOwner, Observer { night ->
             night?.let {
+                buzz(START_BUZZ_PATTERN)
                 binding.startTime.base =
                     SystemClock.elapsedRealtime() - (System.currentTimeMillis() - night.startTimeMilli)
                 binding.startTime.start()
@@ -56,5 +64,18 @@ class SleepTrackerFragment : Fragment() {
         })
 
         return binding.root
+    }
+
+    fun buzz(pattern: LongArray) {
+        val buzzer = activity?.getSystemService<Vibrator>()
+        buzzer?.let {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                buzzer.vibrate(VibrationEffect.createWaveform(pattern, -1))
+            } else {
+
+                buzzer.vibrate(pattern, -1)
+            }
+        }
     }
 }

@@ -1,17 +1,25 @@
 package com.sleeptrack.main.recordsleep
 
+import android.os.Build
 import android.os.Bundle
+import android.os.VibrationEffect
+import android.os.Vibrator
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.hadi.emojiratingbar.EmojiRatingBar
 import com.hadi.emojiratingbar.RateStatus
 import com.sleeptrack.database.SleepDatabase
 import com.sleeptrack.databinding.FragmentRecordSleepBinding
+import com.sleeptrack.main.home.FEEDBACK_BUZZ_PATTERN
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 class RecordSleepFragment : Fragment() {
@@ -39,10 +47,17 @@ class RecordSleepFragment : Fragment() {
 
         sleepQualityViewModel.navigateToSleepTracker.observe(viewLifecycleOwner, Observer {
             if (it == true) { // Observed state is true.
-                findNavController().navigate(
-                    RecordSleepFragmentDirections.actionRecordSleepFragmentToSleepTrackerFragment()
-                )
-                sleepQualityViewModel.doneNavigating()
+                lifecycleScope.launch {
+                    buzz(FEEDBACK_BUZZ_PATTERN)
+                    binding.lavToggle.playAnimation()
+                    binding.save.visibility = View.INVISIBLE
+                    delay(5000)
+                    findNavController().navigate(
+                        RecordSleepFragmentDirections.actionRecordSleepFragmentToSleepTrackerFragment()
+                    )
+                    sleepQualityViewModel.doneNavigating()
+                }
+
             }
         })
 
@@ -77,4 +92,16 @@ class RecordSleepFragment : Fragment() {
         return binding.root
     }
 
+    fun buzz(pattern: LongArray) {
+        val buzzer = activity?.getSystemService<Vibrator>()
+        buzzer?.let {
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                buzzer.vibrate(VibrationEffect.createWaveform(pattern, -1))
+            } else {
+
+                buzzer.vibrate(pattern, -1)
+            }
+        }
+    }
 }
