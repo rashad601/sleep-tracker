@@ -3,26 +3,76 @@ package com.sleeptrack.main.allrecords
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import com.google.android.material.snackbar.Snackbar
+import com.sleeptrack.R
+import com.sleeptrack.database.SleepDatabase
+import com.sleeptrack.database.SleepNight
 import com.sleeptrack.databinding.ActivityAllRecordsListBinding
+import com.sleeptrack.main.home.SleepTrackerViewModel
+import com.sleeptrack.main.home.SleepTrackerViewModelFactory
 
 class AllRecordsListActivity : AppCompatActivity() {
 
-    private lateinit var activityAllRecordsBinding: ActivityAllRecordsListBinding
+    private lateinit var binding: ActivityAllRecordsListBinding
+
+    private lateinit var sleepTrackerViewModel: AllRecordsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        activityAllRecordsBinding = ActivityAllRecordsListBinding.inflate(layoutInflater)
+        binding = ActivityAllRecordsListBinding.inflate(layoutInflater)
 
-        setContentView(activityAllRecordsBinding.root)
+        setContentView(binding.root)
 
-        // Show status bar
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        val application = requireNotNull(this).application
 
-        activityAllRecordsBinding.goBack.setOnClickListener {
+        val datasource = SleepDatabase.getInstance(application).sleepDatabaseDao
+
+        val viewModelFactory = AllRecordsViewModelFactory(datasource, application)
+
+        sleepTrackerViewModel =
+            ViewModelProvider(this, viewModelFactory).get(AllRecordsViewModel::class.java)
+
+        binding.sleepTrackerViewModel = sleepTrackerViewModel
+
+        binding.setLifecycleOwner(this)
+
+        binding.goBack.setOnClickListener {
             onBackPressed()
         }
+
+
+        val recyclerviewAdapter = SleepRecyclerviewAdapter(this,
+            object : SleepRecyclerviewAdapter.OnPositionClick {
+                override fun onItemClick(story: SleepNight) {
+
+                }
+
+            })
+
+        binding.sleepRecyclerview.adapter = recyclerviewAdapter
+
+
+        sleepTrackerViewModel.nights.observe(this, Observer {
+            it?.let{
+                recyclerviewAdapter.setData(it as ArrayList<SleepNight>)
+            }
+        })
+
+        sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
+            if (it == true) { // Observed state is true.
+                Snackbar.make(
+                   findViewById(android.R.id.content),
+                    getString(R.string.cleared_message),
+                    Snackbar.LENGTH_SHORT // How long to display the message.
+                ).show()
+                sleepTrackerViewModel.doneShowingSnackbar()
+            }
+        })
 
     }
 }
