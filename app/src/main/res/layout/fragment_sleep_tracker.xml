@@ -11,98 +11,105 @@
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/backgroundBody"
         tools:context=".main.home.SleepTrackerFragment">
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/_16sdp"
-            android:elevation="@dimen/_16sdp"
-            app:cardCornerRadius="@dimen/_16sdp">
-
-            <LinearLayout
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:layout_margin="@dimen/_12sdp"
-                android:orientation="vertical">
+                android:layout_marginHorizontal="@dimen/_16sdp"
+                android:layout_marginVertical="@dimen/_56sdp"
+                android:elevation="@dimen/_16sdp"
+                app:cardCornerRadius="@dimen/_16sdp">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Welcome back!\n\nTo\n\n"
-                    android:textAllCaps="true"
-                    android:gravity="center_horizontal"
-                    android:textColor="@color/black"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/_14ssp" />
-
-                <ImageView
-                    android:layout_width="@dimen/header_image_width"
-                    android:layout_height="100dp"
-                    android:layout_gravity="center"
-                    android:src="@mipmap/ic_launcher_round"
-                    android:contentDescription="@string/app_name" />
-
-                <Chronometer
-                    android:id="@+id/startTime"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_30sdp"
-                    android:text=""
-                    android:textStyle="bold"
+                    android:layout_height="match_parent"
                     android:gravity="center"
-                    app:setVisible="@{sleepTrackerViewModel.stopButtonVisible}"
-                    app:autoSizeTextType="uniform"
-                    android:textColor="@color/primaryColor"
-                    android:textSize="@dimen/_16ssp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    />
+                    android:layout_margin="@dimen/_12sdp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Welcome back!\n\nTo\n\n"
+                        android:textAllCaps="true"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/_14ssp" />
+
+                    <ImageView
+                        android:layout_width="@dimen/header_image_width"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        android:src="@mipmap/ic_launcher_round"
+                        android:contentDescription="@string/app_name" />
+
+                    <Chronometer
+                        android:id="@+id/startTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_30sdp"
+                        android:text=""
+                        android:textStyle="bold"
+                        android:gravity="center"
+                        app:setVisible="@{sleepTrackerViewModel.stopButtonVisible}"
+                        app:autoSizeTextType="uniform"
+                        android:textColor="@color/primaryColor"
+                        android:textSize="@dimen/_16ssp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        />
 
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/start"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="@dimen/_46sdp"
-                    android:layout_marginEnd="16dp"
-                    app:setVisible="@{sleepTrackerViewModel.startButtonVisible}"
-                    android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
-                    android:onClick="@{()->sleepTrackerViewModel.onStartTracking()}"
-                    android:backgroundTint="@color/primaryColor"
-                    android:elevation="10dp"
-                    android:text="Start Tracking"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:theme="@style/Theme.MaterialComponents.Light"
-                    app:cornerRadius="8dp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/start"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="@dimen/_46sdp"
+                        android:layout_marginEnd="16dp"
+                        app:setVisible="@{sleepTrackerViewModel.startButtonVisible}"
+                        android:enabled="@{sleepTrackerViewModel.startButtonVisible}"
+                        android:onClick="@{()->sleepTrackerViewModel.onStartTracking()}"
+                        android:backgroundTint="@color/primaryColor"
+                        android:elevation="10dp"
+                        android:text="Start Tracking"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        app:cornerRadius="8dp" />
 
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/stop"
-                    android:layout_width="match_parent"
-                    android:layout_height="65dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"
-                    app:setVisible="@{sleepTrackerViewModel.stopButtonVisible}"
-                    android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
-                    android:onClick="@{()->sleepTrackerViewModel.onStopTracking()}"
-                    android:backgroundTint="@android:color/holo_red_dark"
-                    android:elevation="10dp"
-                    android:text="Stop Tracking"
-                    android:textAllCaps="true"
-                    android:textColor="@color/white"
-                    android:theme="@style/Theme.MaterialComponents.Light"
-                    app:cornerRadius="8dp" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/stop"
+                        android:layout_width="match_parent"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        app:setVisible="@{sleepTrackerViewModel.stopButtonVisible}"
+                        android:enabled="@{sleepTrackerViewModel.stopButtonVisible}"
+                        android:onClick="@{()->sleepTrackerViewModel.onStopTracking()}"
+                        android:backgroundTint="@android:color/holo_red_dark"
+                        android:elevation="10dp"
+                        android:text="Stop Tracking"
+                        android:textAllCaps="true"
+                        android:textColor="@color/white"
+                        android:theme="@style/Theme.MaterialComponents.Light"
+                        app:cornerRadius="8dp" />
 
-            </LinearLayout>
+                </LinearLayout>
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
 </layout>
