@@ -51,7 +51,7 @@ class RecordSleepFragment : Fragment() {
                     buzz(FEEDBACK_BUZZ_PATTERN)
                     binding.lavToggle.playAnimation()
                     binding.save.visibility = View.INVISIBLE
-                    delay(5000)
+                    delay(3000)
                     findNavController().navigate(
                         RecordSleepFragmentDirections.actionRecordSleepFragmentToSleepTrackerFragment()
                     )

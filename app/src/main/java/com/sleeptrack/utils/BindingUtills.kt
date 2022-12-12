@@ -39,6 +39,14 @@ fun TextView.setsleepEndDurationFormatted(item: SleepNight?) {
     }
 }
 
+@BindingAdapter("sleepFeedbackFormatted")
+fun TextView.setsleepFeedbackFormatted(item: SleepNight?) {
+    item?.let {
+        if(!it.feedback.trim().isNullOrEmpty() && !it.feedback.equals("null",ignoreCase = true))
+        text = "Feedback : "+it.feedback
+    }
+}
+
 @BindingAdapter("sleepImage")
 fun ImageView.setSleepImage(item: SleepNight?) {
     item?.let {

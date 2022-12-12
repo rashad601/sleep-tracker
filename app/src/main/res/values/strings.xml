@@ -41,4 +41,16 @@
     <string name="seconds_length">%d seconds on %s</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="about_text">Sleep tracking is an activity that has been used for many years.
+        But only recently, it has become more popular than ever before.
+        There are many benefits to sleep tracking,
+        but it is important to know that not all sleep trackers are the same and some will work better for you than others.
+        Read on to find out how sleep tracking can help you.
+        \n\n Sleep Tracking: The Benefits \n\nThe first benefit of sleep tracking is that it can help you manage your stress levels.
+        Many studies have shown that stress affects our ability to get a good nights rest and when we are stressed out we often have trouble sleeping well at night
+        which means we dont get enough REM cycles in our sleep cycle,
+        which can lead to an increased risk of chronic disease and heart disease! One way that a tracker can help
+        with this problem is by monitoring your heart rate while you sleep so if it spikes during the night</string>
+
 </resources>
