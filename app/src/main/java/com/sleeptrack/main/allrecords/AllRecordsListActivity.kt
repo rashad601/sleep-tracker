@@ -1,5 +1,6 @@
 package com.sleeptrack.main.allrecords
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import com.sleeptrack.R
 import com.sleeptrack.database.SleepDatabase
 import com.sleeptrack.database.SleepNight
 import com.sleeptrack.databinding.ActivityAllRecordsListBinding
+import com.sleeptrack.main.sleepdetail.SleepDetailActivity
 
 class AllRecordsListActivity : AppCompatActivity() {
 
@@ -46,8 +48,10 @@ class AllRecordsListActivity : AppCompatActivity() {
 
         val recyclerviewAdapter = AllSleepRecordRecyclerviewAdapter(this,
             object : AllSleepRecordRecyclerviewAdapter.OnPositionClick {
-                override fun onItemClick(story: SleepNight) {
-
+                override fun onItemClick(sleepNight: SleepNight) {
+                    val intent = Intent(this@AllRecordsListActivity, SleepDetailActivity::class.java)
+                    intent.putExtra("ID", sleepNight.nightId)
+                    this@AllRecordsListActivity.startActivity(intent)
                 }
 
             })

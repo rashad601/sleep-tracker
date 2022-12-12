@@ -42,6 +42,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
                         android:text="@string/how_was_hour_sleep"
+                        android:layout_marginBottom="@dimen/_12sdp"
                         android:textAllCaps="true"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14ssp"
