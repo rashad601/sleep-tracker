@@ -2,7 +2,6 @@ package com.sleeptrack.main.allrecords
 
 import android.content.Context
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.sleeptrack.database.SleepNight
@@ -11,10 +10,10 @@ import com.sleeptrack.utils.setSleepDurationFormatted
 import com.sleeptrack.utils.setSleepImage
 
 
-class SleepRecyclerviewAdapter(
+class AllSleepRecordRecyclerviewAdapter(
     private val context: Context,
     private val listener: OnPositionClick
-) : RecyclerView.Adapter<SleepRecyclerviewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<AllSleepRecordRecyclerviewAdapter.ViewHolder>() {
 
     private var mainList = mutableListOf<SleepNight>()
 

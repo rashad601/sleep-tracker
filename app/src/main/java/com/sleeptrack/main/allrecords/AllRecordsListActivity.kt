@@ -10,8 +10,6 @@ import com.sleeptrack.R
 import com.sleeptrack.database.SleepDatabase
 import com.sleeptrack.database.SleepNight
 import com.sleeptrack.databinding.ActivityAllRecordsListBinding
-import com.sleeptrack.main.home.SleepTrackerViewModel
-import com.sleeptrack.main.home.SleepTrackerViewModelFactory
 
 class AllRecordsListActivity : AppCompatActivity() {
 
@@ -46,8 +44,8 @@ class AllRecordsListActivity : AppCompatActivity() {
         }
 
 
-        val recyclerviewAdapter = SleepRecyclerviewAdapter(this,
-            object : SleepRecyclerviewAdapter.OnPositionClick {
+        val recyclerviewAdapter = AllSleepRecordRecyclerviewAdapter(this,
+            object : AllSleepRecordRecyclerviewAdapter.OnPositionClick {
                 override fun onItemClick(story: SleepNight) {
 
                 }
