@@ -7,6 +7,9 @@ import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.sleeptrack.R
 import com.sleeptrack.database.SleepNight
+import java.lang.String.format
+import java.text.MessageFormat.format
+import java.text.SimpleDateFormat
 
 @BindingAdapter("sleepDurationFormatted")
 fun TextView.setSleepDurationFormatted(item: SleepNight?) {
@@ -19,6 +22,20 @@ fun TextView.setSleepDurationFormatted(item: SleepNight?) {
 fun TextView.setSleepQualityString(item: SleepNight?) {
     item?.let {
         text = convertNumericQualityToString(item.sleepQuality, context.resources)
+    }
+}
+
+@BindingAdapter("sleepStartDurationFormatted")
+fun TextView.setSleepStartDurationFormatted(item: SleepNight?) {
+    item?.let {
+        text = "Start: "+SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format( item.startTimeMilli)
+    }
+}
+
+@BindingAdapter("sleepEndDurationFormatted")
+fun TextView.setsleepEndDurationFormatted(item: SleepNight?) {
+    item?.let {
+        text ="End: "+SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format( item.endTimeMilli);
     }
 }
 

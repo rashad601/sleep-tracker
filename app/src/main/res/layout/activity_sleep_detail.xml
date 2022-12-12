@@ -96,7 +96,7 @@
                         app:sleepQualityString="@{sleepDetailViewModel.night}" />
 
                     <TextView
-                        android:id="@+id/sleep_length"
+                        android:id="@+id/sleep_start"
                         android:layout_width="wrap_content"
                         android:layout_height="20dp"
                         android:layout_marginStart="8dp"
@@ -105,13 +105,39 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/quality_string"
+                        app:sleepStartDurationFormatted="@{sleepDetailViewModel.night}" />
+
+                    <TextView
+                        android:id="@+id/sleep_end"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sleep_start"
+                        app:sleepEndDurationFormatted="@{sleepDetailViewModel.night}" />
+
+                    <TextView
+                        android:id="@+id/sleep_length"
+                        android:layout_width="wrap_content"
+                        android:layout_height="20dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginEnd="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sleep_end"
                         app:sleepDurationFormatted="@{sleepDetailViewModel.night}" />
+
+
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/start"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:layout_marginVertical="@dimen/_26sdp"
+                        android:layout_marginBottom="@dimen/_26sdp"
                         android:layout_marginHorizontal="16dp"
                         android:backgroundTint="@color/primaryColor"
                         android:elevation="10dp"
