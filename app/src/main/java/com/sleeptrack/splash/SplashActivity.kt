@@ -3,7 +3,6 @@ package com.sleeptrack.splash
 import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
@@ -11,6 +10,7 @@ import android.util.Log
 import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
 import com.sleeptrack.R
 import com.sleeptrack.main.MainActivity
 
@@ -39,16 +39,17 @@ class SplashActivity : AppCompatActivity() {
                 this.startActivity(myIntent)
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left)
                 this.finish()
-            }catch (e : Exception){
-                Log.v("Splash",e.toString())
+            } catch (e: Exception) {
+                Log.v("Splash", e.toString())
             }
         }, 2500)
     }
 
     // value range from [0 - 1] [invisible - visible]
     private fun fader() {
-        val animator : ObjectAnimator = ObjectAnimator.ofFloat(
-            findViewById(R.id.welcomeText), View.ALPHA,0f,1f)
+        val animator: ObjectAnimator = ObjectAnimator.ofFloat(
+            findViewById(R.id.welcomeText), View.ALPHA, 0f, 1f
+        )
         animator.duration = 1000
         animator.start()
     }

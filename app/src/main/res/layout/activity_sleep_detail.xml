@@ -14,9 +14,9 @@
 
     <ScrollView
         android:id="@+id/drawer_layout"
-        android:background="@color/backgroundBody"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/backgroundBody">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -145,15 +145,14 @@
                         app:sleepFeedbackFormatted="@{sleepDetailViewModel.night}" />
 
 
-
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/start"
                         android:layout_width="match_parent"
                         android:layout_height="65dp"
-                        android:layout_marginBottom="@dimen/_26sdp"
                         android:layout_marginHorizontal="16dp"
-                        android:backgroundTint="@color/primaryColor"
                         android:layout_marginTop="@dimen/_46sdp"
+                        android:layout_marginBottom="@dimen/_26sdp"
+                        android:backgroundTint="@color/primaryColor"
                         android:elevation="10dp"
                         android:onClick="@{() -> sleepDetailViewModel.onClose()}"
                         android:text="Go Back"
@@ -161,10 +160,10 @@
                         android:textColor="@color/white"
                         android:theme="@style/Theme.MaterialComponents.Light"
                         app:cornerRadius="8dp"
-                        app:layout_constraintTop_toBottomOf="@+id/sleep_feedback"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sleep_feedback" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

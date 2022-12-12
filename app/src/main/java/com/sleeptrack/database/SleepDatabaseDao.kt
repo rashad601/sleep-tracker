@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
-interface SleepDatabaseDao{
+interface SleepDatabaseDao {
 
     @Insert
     fun insert(sleepNight: SleepNight)
@@ -19,7 +19,7 @@ interface SleepDatabaseDao{
     fun clear()
 
     @Query("SELECT * FROM daily_sleep_quality_table ORDER BY night_id DESC")
-    fun getAllNights():LiveData<List<SleepNight>>
+    fun getAllNights(): LiveData<List<SleepNight>>
 
     @Query("SELECT * FROM daily_sleep_quality_table ORDER BY night_id DESC LIMIT 1")
     fun getTonight(): SleepNight?

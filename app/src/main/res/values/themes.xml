@@ -34,7 +34,7 @@
 
     <style name="Toolbar" parent="ThemeOverlay.AppCompat.Light" />
 
-    <style name="splashscreen" parent="AppTheme" >
+    <style name="splashscreen" parent="AppTheme">
         <item name="android:windowBackground">@color/white</item>
     </style>
 </resources>

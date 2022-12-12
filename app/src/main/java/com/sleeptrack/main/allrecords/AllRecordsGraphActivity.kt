@@ -72,7 +72,13 @@ class AllRecordsGraphActivity : AppCompatActivity() {
                         )
                     )
 
-                    list.add(SimpleDateFormat("dd EEE", Locale.getDefault()).format( sleepNights.get(i).startTimeMilli).toString())
+                    list.add(
+                        SimpleDateFormat("dd EEE", Locale.getDefault()).format(
+                            sleepNights.get(
+                                i
+                            ).startTimeMilli
+                        ).toString()
+                    )
                 }
                 populateGraph(allGrapohData, list.toTypedArray())
             }

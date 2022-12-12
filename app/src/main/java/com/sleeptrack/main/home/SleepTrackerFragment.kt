@@ -16,7 +16,7 @@ import com.sleeptrack.databinding.FragmentSleepTrackerBinding
 val START_BUZZ_PATTERN =
     longArrayOf(100, 100, 100, 100, 100, 100, 100, 100)
 val FEEDBACK_BUZZ_PATTERN =
-    longArrayOf(0, 100, 500, 900,)
+    longArrayOf(0, 100, 500, 900)
 val STOP_BUZZ_PATTERN = longArrayOf(0, 1000)
 
 

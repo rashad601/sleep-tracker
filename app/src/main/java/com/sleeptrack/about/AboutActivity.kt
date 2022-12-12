@@ -3,7 +3,6 @@ package com.sleeptrack.about
 import android.os.Bundle
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
-import com.sleeptrack.R
 import com.sleeptrack.databinding.ActivityAboutBinding
 
 class AboutActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class AboutActivity : AppCompatActivity() {
         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 
-        activityAboutBinding.goBack.setOnClickListener{
+        activityAboutBinding.goBack.setOnClickListener {
             onBackPressed()
         }
     }

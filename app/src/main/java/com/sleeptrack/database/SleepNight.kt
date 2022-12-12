@@ -14,7 +14,7 @@ data class SleepNight(
     @ColumnInfo(name = "start_time_milli")
     var startTimeMilli: Long = System.currentTimeMillis(),
 
-    @ColumnInfo(name = "send_time_milli")
+    @ColumnInfo(name = "end_time_milli")
     var endTimeMilli: Long = startTimeMilli,
 
     @ColumnInfo(name = "quality_rating")

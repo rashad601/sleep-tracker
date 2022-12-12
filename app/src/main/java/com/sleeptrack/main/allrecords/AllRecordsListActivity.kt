@@ -49,7 +49,8 @@ class AllRecordsListActivity : AppCompatActivity() {
         val recyclerviewAdapter = AllSleepRecordRecyclerviewAdapter(this,
             object : AllSleepRecordRecyclerviewAdapter.OnPositionClick {
                 override fun onItemClick(sleepNight: SleepNight) {
-                    val intent = Intent(this@AllRecordsListActivity, SleepDetailActivity::class.java)
+                    val intent =
+                        Intent(this@AllRecordsListActivity, SleepDetailActivity::class.java)
                     intent.putExtra("ID", sleepNight.nightId)
                     this@AllRecordsListActivity.startActivity(intent)
                 }
@@ -60,7 +61,7 @@ class AllRecordsListActivity : AppCompatActivity() {
 
 
         sleepTrackerViewModel.nights.observe(this, Observer {
-            it?.let{
+            it?.let {
                 recyclerviewAdapter.setData(it as ArrayList<SleepNight>)
             }
         })
@@ -68,7 +69,7 @@ class AllRecordsListActivity : AppCompatActivity() {
         sleepTrackerViewModel.showSnackBarEvent.observe(this, Observer {
             if (it == true) { // Observed state is true.
                 Snackbar.make(
-                   findViewById(android.R.id.content),
+                    findViewById(android.R.id.content),
                     getString(R.string.cleared_message),
                     Snackbar.LENGTH_SHORT // How long to display the message.
                 ).show()

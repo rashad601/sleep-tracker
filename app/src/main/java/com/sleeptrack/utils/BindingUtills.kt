@@ -1,14 +1,11 @@
 package com.sleeptrack.utils
 
 import android.view.View
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.sleeptrack.R
 import com.sleeptrack.database.SleepNight
-import java.lang.String.format
-import java.text.MessageFormat.format
 import java.text.SimpleDateFormat
 
 @BindingAdapter("sleepDurationFormatted")
@@ -28,22 +25,22 @@ fun TextView.setSleepQualityString(item: SleepNight?) {
 @BindingAdapter("sleepStartDurationFormatted")
 fun TextView.setSleepStartDurationFormatted(item: SleepNight?) {
     item?.let {
-        text = "Start: "+SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format( item.startTimeMilli)
+        text = "Start: " + SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format(item.startTimeMilli)
     }
 }
 
 @BindingAdapter("sleepEndDurationFormatted")
 fun TextView.setsleepEndDurationFormatted(item: SleepNight?) {
     item?.let {
-        text ="End: "+SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format( item.endTimeMilli);
+        text = "End: " + SimpleDateFormat("EEE MMM, yyyy hh:mm:ss a").format(item.endTimeMilli);
     }
 }
 
 @BindingAdapter("sleepFeedbackFormatted")
 fun TextView.setsleepFeedbackFormatted(item: SleepNight?) {
     item?.let {
-        if(!it.feedback.trim().isNullOrEmpty() && !it.feedback.equals("null",ignoreCase = true))
-        text = "Feedback : "+it.feedback
+        if (!it.feedback.trim().isNullOrEmpty() && !it.feedback.equals("null", ignoreCase = true))
+            text = "Feedback : " + it.feedback
     }
 }
 
